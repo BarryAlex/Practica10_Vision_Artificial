@@ -1,0 +1,1 @@
+# Practica10_Vision_Artificial
