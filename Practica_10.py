@@ -6,15 +6,21 @@ import numpy as np
 import cv2
 from matplotlib import pyplot as plt
 
-im1 = cv2.imread('Perro azul.jpeg')
+#im1 = cv2.imread('Perro azul.jpeg')
+#im1 = cv2.imread('IMG_2656.jpg')
+im1 = cv2.imread('IMG_0164.jpg')
 im1 = cv2.cvtColor(im1, cv2.COLOR_BGR2RGB)
 #plt.imshow(im1)
+#plt.show()
 mask = np.zeros(im1.shape[:2], np.uint8)
 
 bgModel = np.zeros((1,65), np.float64)
 fgModel = np.zeros((1,65), np.float64)
 
-rectangulo = (490,450,1900,2200)
+#rectangulo = (490,450,1900,2200)
+#rectangulo = (1000,0,1000,1000)
+#rectangulo = (520,0,1000,1300)  #rostro
+rectangulo = (600,0,1000,2700)
 
 cv2.grabCut(im1, mask, rectangulo, bgModel, fgModel, 5, cv2.GC_INIT_WITH_RECT)
 mask2 = np.where((mask==2)|(mask==0), 0, 1).astype('uint8')
